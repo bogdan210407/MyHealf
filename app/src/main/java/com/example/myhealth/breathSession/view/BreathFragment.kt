@@ -38,10 +38,9 @@ class BreathFragment: Fragment()
         sessionLengthValue.text = viewModel.parameters.sessionLength.toString()
         sessionDelayValue.text = viewModel.parameters.sessionDelay1.toString()
 
-        viewModel.startSession()
         val startButton = view.findViewById<Button>(R.id.startButton)
         startButton.setOnClickListener {
-            println("Hello!")
+            viewModel.startSession()
         }
     }
     fun onChange(newValues: SessionParameters){
@@ -54,5 +53,8 @@ class BreathFragment: Fragment()
         exhaleValue?.text = newValues.exhale.toString()
         sessionLengthValue?.text = newValues.sessionLength.toString()
         sessionDelayValue?.text = newValues.sessionDelay1.toString()
+    }
+    fun setStartEnabled(value: Boolean){
+        view?.findViewById<Button>(R.id.startButton)?.isEnabled = value
     }
 }
